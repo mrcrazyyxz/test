@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr_CrazyyX_products | Smart & Stylish Essentials</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #1e293b;
+            --secondary-color: #6366f1;
+            --accent-color: #f59e0b;
+            --text-color: #334155;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* --- ANIMATED BACKGROUND --- */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(139, 92, 246, 0.2) 0%, transparent 40%);
+            animation: gradientMove 15s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-5%, 5%) rotate(5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+
+        /* Floating Shapes */
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: rgba(99, 102, 241, 0.4);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: rgba(245, 158, 11, 0.4);
+            bottom: 20%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            background: rgba(236, 72, 153, 0.3);
+            top: 50%;
+            left: 60%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.05); }
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        .btn-primary {
+            padding: 1rem 2rem;
+            background: var(--white);
+            color: var(--primary-color);
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            padding: 1rem 2rem;
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--white);
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+        .logo span { color: var(--accent-color); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.8);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--white); }
+
+        .cta-btn {
+            padding: 0.6rem 1.5rem;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(245, 158, 11, 0.4);
+        }
+
+        /* --- FEATURES (Glassmorphism) --- */
+        .features {
+            padding: 5rem 10%;
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        /* --- PRODUCTS --- */
+        .products {
+            padding: 5rem 10%;
+            background: linear-gradient(180deg, #e2e8f0 0%, #f8fafc 100%);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .product-img {
+            height: 250px;
+            background: linear-gradient(135deg, #cbd5e1, #94a3b8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 4rem;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-desc {
+            color: #64748b;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .btn-buy {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), #334155);
+            color: white;
+            text-align: center;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-buy:hover {
+            background: linear-gradient(135deg, var(--secondary-color), #8b5cf6);
+        }
+
+        /* --- ABOUT --- */
+        .about {
+            padding: 6rem 10%;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--secondary-color);
+            filter: blur(150px);
+            opacity: 0.2;
+            top: -100px;
+            right: -100px;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--accent-color), #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            max-width: 800px;
+            margin: 0 auto;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content h3 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .socials a {
+            color: var(--white);
+            margin: 0 15px;
+            font-size: 1.4rem;
+            transition: 0.3s;
+        }
+
+        .socials a:hover { 
+            color: var(--accent-color);
+            transform: translateY(-3px);
+            display: inline-block;
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
+            .hero-btns { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Mr_Crazyy<span>X</span>_products</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Why Us</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+        <a href="#products" class="cta-btn">Shop Now</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        
+        <div class="hero-content">
+            <h1>Upgrade Your Everyday Routine</h1>
+            <p>Welcome to Mr_CrazyyX Products, here you will find the best and effective products. Upgrade your everyday routine with a smart, stylish essential designed to simplify your life — combining practical functionality with elegant design to keep your space organized, efficient, and effortlessly beautiful.</p>
+            <div class="hero-btns">
+                <a href="#products" class="btn-primary">View Collection</a>
+                <a href="#about" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="section-title">
+            <h2>Why Choose Us?</h2>
+            <p>Premium quality meets modern design</p>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>Fast Shipping</h3>
+                <p>Get your essentials delivered quickly and safely anywhere.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Secure Payment</h3>
+                <p>100% secure payment gateways for worry-free transactions.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-gem"></i>
+                <h3>Premium Quality</h3>
+                <p>Materials chosen for durability and aesthetic appeal.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="section-title">
+            <h2>Our Products</h2>
+            <p>Curated essentials for the modern lifestyle</p>
+        </div>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Smart Organizer</div>
+                    <div class="product-desc">Keep your space tidy with this automated compartment organizer.</div>
+                    <span class="price">$49.99</span>
+                    <a href="#" class="btn-buy">Add to Cart</a>
+                </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Minimalist Watch</div>
+                    <div class="product-desc">Elegant timekeeping meets modern smart features.</div>
+                    <span class="price">$129.99</span>
+                    <a href="#" class="btn-buy">Add to Cart</a>
+                </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <i class="fas fa-headphones"></i>
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Wireless Earbuds</div>
+                    <div class="product-desc">Premium sound quality with noise cancellation.</div>
+                    <span class="price">$89.99</span>
+                    <a href="#" class="btn-buy">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Mr_CrazyyX Products</h2>
+        <p>Welcome to Mr_CrazyyX Products, here you will find the best and effective products. Upgrade your everyday routine with a smart, stylish essential designed to simplify your life — combining practical functionality with elegant design to keep your space organized, efficient, and effortlessly beautiful.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>Mr_CrazyyX_products</h3>
+            <p>Your trusted source for smart & stylish essentials.</p>
+            <div class="socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
